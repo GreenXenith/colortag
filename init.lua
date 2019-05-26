@@ -1,4 +1,4 @@
-local function validHex(color)
+local function hex_is_valid(color)
 	local patterns = {"%x%x%x%x%x%x", "%x%x%x", "%x%x%x%x%x%x%x%x"} -- Standard, shortened, alpha
 	for _, pat in pairs(patterns) do
 		if color:find("^#"..pat.."$") then
@@ -65,7 +65,7 @@ minetest.register_chatcommand("colortag",{
 		else
 			return false, "Invalid usage. See /help colortag."
 		end
-		if not validHex(color) then
+		if not hex_is_valid(color) then
 			return false, "Invalid color."
 		end
 		player:set_nametag_attributes({
